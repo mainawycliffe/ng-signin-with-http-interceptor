@@ -27,6 +27,8 @@ export class LoginPageComponent implements OnInit {
     // convert the angular form model to form data
     // this ensure data is sent as formdata and not an array
     // some backends are versatile enought to process the array form but not all
+    this.frmLogin.disable();
+
     const fd = new FormData();
     fd.append('username', this.frmLogin.value.username);
     fd.append('password', this.frmLogin.value.password);
@@ -37,6 +39,8 @@ export class LoginPageComponent implements OnInit {
         // redirect to homepage
       },
       error => {
+        this.frmLogin.enable();
+
         console.log(error);
         // show error message
       }
